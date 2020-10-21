@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        
+        <style> 
+        .butoni{
+            display: none;
+        }
+        .cardColor:hover .butoni{
+display: block;
+}
+        </style>
+</head>
+
+<body class="body">
+
+    <div class="row rownav">
+        <div class="col-6">
+            LOGO
+        </div>
+        <div class="col-6 colnav">
+
+            <div class="navbar">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html" 
+                            >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"   href="test.html" 
+                          >Laptop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Desktop.html"
+                          > Desktop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Gaming.html">Gaming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Service.html" >Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html" >About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html" >Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid" id="cards">
+        <div class="row">
+            <div class="col-md-2" id="">
+                <form action="">
+                    <form>
+                        <div class="form-group">
+                            <label for="buxheti">Shkruaj buxhetin per produkt:</label>
+                            <input type="text" id="buxheti" class="form-control text-center" />
+                        </div>
+                        <div class="form-group">
+                            <label for="opsioni">Zgjedh sortimin</label>
+                            <select id="opsioni" class="form-control">
+                                <option value="low">Prej me te lirit deri te me i shtrenjti</option>
+                                <option value="high">Prej me te shtrenjtit deri te me i liri</option>
+                            </select>
+                        </div>
+                        <input onclick="filtro()" type="button" value="Filtro" class="btn btn-danger"
+                            style="width: 100%;" />
+                    </form>
+                </form>
+            </div>
+            <div class="col-md-10">
+                <div class="row rowCard" id="rowCard">
+                    <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+
+
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row" id="parentSortimi">
+
+        </div>
+    </div>
+
+
+    <script>
+        
+
+        var objekti = [
+            {
+                name: 'Hp',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:800 +'€',
+                img:'img/hp-spectre-13LP.jpg',
+            },
+            {
+                name: 'Dell',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:750 + '€',
+                img:'img/Dell-XPS-13-Predufu-Laptop.jpg',
+            },
+            {
+                name: 'MSI',
+                description: 'The company first built its reputation on developing and manufacturing computer motherboards and graphics cards. It established its subsidiary FUNTORO in 2008 to provide solutions for vehicle infotainment.',
+                price:980 +'€',
+                img:'img/MSILAptop.jpg',
+            },
+            {
+                name: 'Lenovo',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:400 + '€',
+                img:'img/Lenovo LAptop.jpg',
+            },
+            {
+                name: 'Samsung',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:200 + '€',
+                img:'img/samsung-4k-oled.jpgLAPOTP.jpg',
+            },
+            {
+                name: 'Asus',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:300 + '€',
+                img:'img/ASUS-Zenbook-Pro-Duo-at-angleLAPtop.jpg',
+            },
+        ]
+        var info = document.getElementById('rowCard')
+        info.innerHTML = " "
+        
+        function kliko (){
+
+        for (var i=0; i < objekti.length; i++){
+            // krijimi i kolones
+            var kolona = document.createElement('div')
+            kolona.classList.add('col-lg-3')
+            kolona.classList.add('col-md-3')
+            kolona.classList.add('col-sm-12')
+            kolona.classList.add('col-12')
+
+            info.appendChild(kolona)
+
+            // krijimi kartes
+            var card = document.createElement('div')
+            card.classList.add('cardColor')
+            kolona.appendChild(card)
+
+            // krijimi i fotos
+            var image = document.createElement('img')
+            image.classList.add('card-img-top')
+            image.src = objekti[i].img
+            card.appendChild(image)
+
+            // krijimi i card-body
+            var cardB = document.createElement('div')
+            cardB.classList.add('card-body')
+            card.appendChild(cardB)
+
+            // krijimi titulit
+            var h5 = document.createElement('h5')
+            h5.classList.add('card-title')
+            h5.textContent =  objekti[i].name
+            cardB.appendChild(h5)
+
+            // krijimi paragrafit
+            var p = document.createElement('p')
+            p.classList.add('card-text')
+            p.textContent =  objekti[i].description
+            cardB.appendChild(p)
+
+            // krijimi butonit
+                var btn = document.createElement('button')
+                btn.classList.add('btn')
+                btn.classList.add('btn-primary')
+                btn.classList.add('butoni')
+
+                // btn.style.display="none"
+                btn.textContent = objekti[i].price
+                
+
+                cardB.appendChild(btn)
+        }}
+        kliko()
+
+        var objektiF = [
+            {
+                name: 'Hp',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:800 +'€',
+                img:'img/hp-spectre-13LP.jpg',
+            },
+            {
+                name: 'Dell',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:750 + '€',
+                img:'img/Dell-XPS-13-Predufu-Laptop.jpg',
+            },
+            {
+                name: 'MSI',
+                description: 'The company first built its reputation on developing and manufacturing computer motherboards and graphics cards. It established its subsidiary FUNTORO in 2008 to provide solutions for vehicle infotainment.',
+                price:980 +'€',
+                img:'img/MSILAptop.jpg',
+            },
+            {
+                name: 'Lenovo',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:400 + '€',
+                img:'img/Lenovo LAptop.jpg',
+            },
+            {
+                name: 'Samsung',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:200 + '€',
+                img:'img/samsung-4k-oled.jpgLAPOTP.jpg',
+            },
+            {
+                name: 'Asus',
+                description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, esse impedit, at saepe nulla sed molestiae, cumque autem placeat error laboriosam eacupiditate! Expedita distinctio, nobis incidunt nemo explicabo autem',
+                price:300 + '€',
+                img:'img/ASUS-Zenbook-Pro-Duo-at-angleLAPtop.jpg',
+            },
+        ]
+
+        var parentSortimi = document.getElementById('parentSortimi')
+        parentSortimi.innerHTML = ' '
+
+        function filtro() {
+
+            parentSortimi.innerHTML = ' '
+            var buxheti = document.getElementById('buxheti').value 
+            var listaFilturar = objektiF.filter( filtrmi = i => { return i.price<=buxheti})
+            var opsioni = document.getElementById('opsioni').value 
+            
+            function filterCard(){
+                for (var i=0; i < listaSort.length; i++){
+
+            // krijimi i kolones
+            var kolona = document.createElement('div')
+            kolona.classList.add('col-lg-3')
+            kolona.classList.add('col-md-3')
+            kolona.classList.add('col-sm-12')
+            kolona.classList.add('col-12')
+
+            parentSortimi.appendChild(kolona)
+
+            // krijimi kartes
+            var card = document.createElement('div')
+            card.classList.add('cardColor')
+            kolona.appendChild(card)
+
+            // krijimi i fotos
+            var image = document.createElement('img')
+            image.classList.add('card-img-top')
+            image.src = listaSort[i].img
+            card.appendChild(image)
+
+            // krijimi i card-body
+            var cardB = document.createElement('div')
+            cardB.classList.add('card-body')
+            card.appendChild(cardB)
+
+            // krijimi titulit
+            var h5 = document.createElement('h5')
+            h5.classList.add('card-title')
+            h5.textContent =  listaSort[i].name
+            cardB.appendChild(h5)
+
+            // krijimi paragrafit
+            var p = document.createElement('p')
+            p.classList.add('card-text')
+            p.textContent =  listaSort[i].description
+            cardB.appendChild(p)
+
+            // krijimi butonit
+                var btn = document.createElement('button')
+                btn.classList.add('btn')
+                btn.classList.add('btn-primary')
+                btn.classList.add('butoni')
+
+                // btn.style.display="none"
+                btn.textContent = listaSort[i].price
+                
+
+                cardB.appendChild(btn)
+            }}
+            if(opsioni=='low'){
+                var listaSort = listaFilturar.sort( function sortimi(a,z){
+                    return a.price - z.price
+                }
+                )
+                filterCard()
+            }
+            else{ var listaSort = listaFilturar.sort( function sortimi(a,z){
+                    return z.price - a.price
+                }
+                )
+                filterCard()
+        }}
+    </script>
+</body>
+
+</html>
